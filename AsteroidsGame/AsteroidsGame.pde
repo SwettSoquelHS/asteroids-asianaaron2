@@ -1,9 +1,6 @@
-/* * * * * * * * * * * * * * * * * * * * * * *
- Class variable declarations here
- */
-Spaceship player1;
+Spaceship ship;
 //Asteroid[] asteroids;
-//Star[] starField;
+Star[] starField = new Star[100];
 
 
 /*
@@ -20,6 +17,10 @@ boolean SPACE_BAR;    //User is pressing space bar
  */
 public void setup() {
   size(640, 400);
+  ship = new Spaceship(10,10);
+  for(int i = 0; i < starField.length; i++){
+    starField[i] = new Star();   
+  }
   
   //initialize your asteroid array and fill it
   
@@ -33,8 +34,13 @@ public void setup() {
   Drawing work here
  */
 public void draw() {
-  //your code here
   background(0);
+  ship.show();
+  for(int i = 0; i < starField.length; i++){
+    starField[i].show();    
+  }
+  
+  
   
   //Draw Starfield first 
   //TODO: Part I
@@ -106,3 +112,17 @@ void keyReleased() {
     SPACE_BAR = false;
   }
 }
+
+/*void checkOnAsteroids(){
+  for(int i = 0; i < rocks.length; i++){
+    Asteroid a1 = rocks[i];
+    for(int j = 0; j < rocks.length; j++){
+      Asteroid a2 = rocks[j];
+      if(a1 != a2 && a1.collidingWith(a2)){
+        //sdas
+        
+      }
+      
+    }
+  }
+} */
