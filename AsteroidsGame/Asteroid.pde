@@ -16,8 +16,9 @@ class Asteroid extends Mover {
   }
 
   void show() {
-    spin += 0.5;
+    spin += 0.7;
     smooth();
+    fill(155);
     pushMatrix();
     translate(x, y);
     ellipse(0, 0, radius, radius);

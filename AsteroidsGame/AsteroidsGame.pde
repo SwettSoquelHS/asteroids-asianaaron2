@@ -3,10 +3,17 @@
  */
 Spaceship player1;
 Asteroid[] asteroids;
+float asterX;
+float asterY;
+float asterDir;
+float asterSpeed;
+float asterRad;
+float asterSpin;
 Star[] starField;
 float starX;
 float starY;
 float starSize;
+Bullet[] bullet;
 
 
 /*
@@ -28,11 +35,20 @@ public void setup() {
   size(640, 400);
 
   //initialize your asteroid array and fill it
-
+  asteroids = new Asteroid[20];
+  for ( int i = 0; i < asteroids.length; i++ ) {
+    asterX = (float)(width * Math.random());
+    asterY = (float)(height * Math.random());
+    asterSpeed = (float)(2 * Math.random());
+    asterDir = (float)(360 * Math.random());
+    asterRad = (float)(Math.cos(500.0)*2);
+    asterSpin = (float)(5 * Math.random());
+    asteroids[i] = new Asteroid(asterX, asterY, asterSpeed, asterDir, asterSpin, 100);
+  }
   //initialize ship
   player1 = new Spaceship(width/2, height/2);
   //initialize starfield
-  starField = new Star[100];
+  starField = new Star[200];
   for ( int i = 0; i < starField.length; i++ ) {
     starX = random(0, width);
     starY = random(0, height);
@@ -71,9 +87,6 @@ public void draw() {
     asteroids[i].update();
     asteroids[i].show();
   }
-
-  //Update spaceship
-  //TODO: Part I
 
   //Check for ship collision agaist asteroids
   //TODO: Part II or III
