@@ -74,25 +74,27 @@ abstract class Mover implements Movable {
   protected float direction;
   protected int myColor;
   protected float radius;  
-
+  protected float spin;
   /*
     Default Mover, not actually moving and directionless
    */
   Mover(float x, float y) {
     //The line below shows how we can 
     //link this constructor to the constructor below through "this"
-    this(x, y, 0, 0);
+    this(x, y, 0, 0, 0, 0);
   }
 
   /*
     Mover constructor specifying x, y position along with its speed and
    direction (in degrees)
    */
-  Mover(float x, float y, float speed, float direction) {
+  Mover(float x, float y, float speed, float direction, float radius, float spin) {
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.direction = direction;
+    this.radius = radius;
+    this.spin = spin;
     myColor = 225;
     radius = 0.0;
   }
@@ -121,38 +123,31 @@ abstract class Mover implements Movable {
   /*
     TODO: Part 4: Implement collision detection
    */
-  boolean collidingWith(Movable m) {
-    float distance = dist(x, y, m.getX(), m.getY());
-    
-    boolean touching = distance < (radius + m.getRadius());
-    return touching;
+  boolean collidingWith(Movable object) {
+    return false;
   }
 
-  float getX() {
+  //TODO: Part I: implement the methods of Moveable interface - delete this comment
+  float getX() { 
     return x;
   }
-
-  float getY() {
+  float getY() { 
     return y;
   }
-
-  float getDirection() {
+  float getDirection() { 
     return direction;
   }
-
-  float getSpeed() {
+  float getSpeed() { 
     return speed;
   }
-
-  float getRadius() {
+  float getRadius() { 
     return radius;
   }
 
-  void setDirection(float newDirectionInDegrees) {
-    direction = newDirectionInDegrees;
+  void setDirection(float newDirection) { 
+    direction = newDirection;
   }
-
-  void setSpeed(float newSpeed) {
+  void setSpeed(float newSpeed) { 
     speed = newSpeed;
   }
 }
